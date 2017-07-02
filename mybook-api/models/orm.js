@@ -1,8 +1,18 @@
-/* eslint-disable jsx-a11y/href-no-hash */
-const fs = require('fs');
-const path = require('path');
+/**
+ * @file orm.js
+ * Provides a single object to access the sequelized database and its models.
+ *
+ * @author Randy Carver
+ * @date 7/1/17
+ *
+ * Copyright © 2017 Blue Otter Software - All Rights Reserved
+ * The MyBooks tutorial project is Licensed under the MIT License.
+ * See LICENSE.md file in the project root for full license information.
+ * {@link https://github.com/rpcarver/mybooks|MyBooks Tutorial Github Respository}
+ * {@link http://blueottersoftware.com/2017/06/19/mybooks-tutorial-index/MyBooks Tutorial Index}
+ * {@link https://www.linkedin.com/in/randycarver/|LinkedIn}
+ **/
 const Sequelize = require('sequelize');
-
 const env = require('../config/env');
 
 const orm = {};
@@ -23,13 +33,12 @@ const sequelize = new Sequelize(env.DATABASE_NAME, env.DATABASE_USERNAME, env.DA
   logging: env.DATABASE_QUERY_LOGGING,
 });
 
-// Import the models
-fs.readdirSync(__dirname)
-  .filter(file => (file.indexOf('.') !== 0) && (file !== 'orm.js') && (file.slice(-3) === '.js'))
-  .forEach((file) => {
-    let model = sequelize.import(path.join(__dirname, file));
-    orm[model.name] = model;
-});
+orm.authors = sequelize.import('./authors.js');
+orm.books = sequelize.import('./books.js');
+orm.book_authors = sequelize.import('./books_authors.js');
+orm.formats = sequelize.import('./formats.js');
+orm.locations = sequelize.import('./locations.js');
+orm.publishers = sequelize.import('./publishers.js');
 
 // Associate the models
 Object.keys(orm).forEach((modelName) => {
@@ -38,8 +47,7 @@ Object.keys(orm).forEach((modelName) => {
   }
 });
 
-
-orm.sequelize = sequelize;
 orm.Sequelize = Sequelize;
+orm.sequelize = sequelize;
 
 module.exports = orm;

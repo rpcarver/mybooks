@@ -1,21 +1,26 @@
 /**
- * Created by rcarver on 6/29/17.
- */
-/**
- * Created by rcarver on 6/27/17.
- */
+ * @file env-tests.js 
+ * Provides tests for the env.js environment wrapper
+ *
+ * @author Randy Carver
+ * @date 7/1/17
+ *
+ * Copyright © 2017 Blue Otter Software - All Rights Reserved
+ * The MyBooks tutorial project is Licensed under the MIT License.
+ * See LICENSE.md file in the project root for full license information.
+ * {@link https://github.com/rpcarver/mybooks|MyBooks Tutorial Github Respository}
+ * {@link http://blueottersoftware.com/2017/06/19/mybooks-tutorial-index/MyBooks Tutorial Index}
+ * {@link https://www.linkedin.com/in/randycarver/|LinkedIn}
+ **/
 require('mocha');
 const expect = require('chai').expect;
 
 function removeEnv() {
-  let theKey = null;
-  for (key in require.cache) {
-    if (key.endsWith('config/env.js')) {
-      theKey = key;
-    }
-  }
-  if (theKey !== null && theKey.length > 0) {
-    delete require.cache[theKey];
+  const envKey = require.resolve('../../config/env.js');
+  const envCache = require.cache[envKey];
+
+  if (envCache) {
+    delete require.cache[envKey];
     delete process.env.DOTENV_LOADED;
     delete process.env.NODE_ENV;
     delete process.env.DATABASE_NAME;
@@ -34,7 +39,7 @@ function removeEnv() {
   }
 }
 
-describe('test env', () => {
+describe('env - test', () => {
   before(() => {
     removeEnv();
   });
@@ -58,6 +63,7 @@ describe('test env', () => {
     expect(env.DATABASE_HOST).to.equal('localhost');
     expect(env.DATABASE_PORT).to.equal(3306);
     expect(env.DATABASE_USERNAME).to.equal('root');
+    expect(env.DATABASE_PASSWORD).to.exist;
     expect(env.DATABASE_DIALECT).to.equal('mysql');
     expect(env.DATABASE_POOL_MAX).to.equal(10);
     expect(env.DATABASE_POOL_MIN).to.equal(1);
@@ -69,7 +75,7 @@ describe('test env', () => {
   });
 });
 
-describe('dev env', () => {
+describe('env - dev', () => {
   before(() => {
     removeEnv();
   });
@@ -94,6 +100,7 @@ describe('dev env', () => {
     expect(env.DATABASE_HOST).to.equal('localhost');
     expect(env.DATABASE_PORT).to.equal(3306);
     expect(env.DATABASE_USERNAME).to.equal('root');
+    expect(env.DATABASE_PASSWORD).to.exist;
     expect(env.DATABASE_DIALECT).to.equal('mysql');
     expect(env.DATABASE_POOL_MAX).to.equal(10);
     expect(env.DATABASE_POOL_MIN).to.equal(1);

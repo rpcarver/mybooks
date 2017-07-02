@@ -5,10 +5,21 @@
     "mocha": true
   },
   "extends": "airbnb",
+  "plugins": [
+    "chai-expect",
+    "chai-friendly"
+  ],
   "rules": {
-    "indent": [1, 2 ],
+    "indent": [1, 2, {
+      "SwitchCase": 1
+    }],
     "prefer-const": 1,
     "complexity": [ 1, 5 ],
-    "jsx-a11y/href-no-hash": 0
+    "jsx-a11y/href-no-hash": 0,
+    "chai-expect/missing-assertion": 1,
+    "chai-expect/terminating-properties": 1,
+    "chai-expect/no-inner-compare": 1,
+    "no-unused-expressions": 0,
+    "chai-friendly/no-unused-expressions": 2
   }
 }

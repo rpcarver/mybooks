@@ -1,8 +1,22 @@
 /**
- * Created by rcarver on 6/27/17.
- */
+ * @file env.js
+ * Provides a wrapper service for process.env variables and loaded process.env
+ * from the environments .env file.
+ *
+ * @author Randy Carver
+ * @date 7/1/17
+ *
+ * Copyright © 2017 Blue Otter Software - All Rights Reserved
+ * The MyBooks tutorial project is Licensed under the MIT License.
+ * See LICENSE.md file in the project root for full license information.
+ * {@link https://github.com/rpcarver/mybooks|MyBooks Tutorial Github Respository}
+ * {@link http://blueottersoftware.com/2017/06/19/mybooks-tutorial-index/MyBooks Tutorial Index}
+ * {@link https://www.linkedin.com/in/randycarver/|LinkedIn}
+ **/
 const dotenv = require('dotenv');
 
+// Load the environment vars for the correct environment.   Default to dev.
+// YOU WILL NEED TO CREATE A .env.dev AND A .env.test file in the config directory!
 if (process.env.DOTENV_LOADED !== 'true') {
   let envPath = null;
   switch (process.env.NODE_ENV) {
@@ -33,7 +47,7 @@ const env = {
   DATABASE_NAME: process.env.DATABASE_NAME || 'mybooks',
   DATABASE_HOST: process.env.DATABASE_HOST || 'localhost',
   DATABASE_PORT: process.env.DATABASE_PORT || 3306,
-  DATABASE_USERNAME: process.env.DATABASE_USERNAME,
+  DATABASE_USERNAME: process.env.DATABASE_USERNAME || '',
   DATABASE_PASSWORD: process.env.DATABASE_PASSWORD || '',
   DATABASE_DIALECT: process.env.DATABASE_DIALECT || 'mysql',
   DATABASE_POOL_MAX: process.env.DATABASE_POOL_MAX || 10,
