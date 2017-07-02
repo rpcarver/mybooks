@@ -1,6 +1,6 @@
 ## Synopsis
 
-Creating a Software Ecosphere: MyBooks Tutorial - See http://blueottersoftware.com/2017/06/12/mybooks-tutorial-overview for the actual tutorial
+Creating a Software Ecosphere: MyBooks Tutorial - See http://blueottersoftware.com/2017/06/19/mybooks-tutorial-index/ for the actual tutorial
 We'll be using GCP and creating the database, restful webservices, web application, and an iOS app to manage/create a home library catalog.   I'm tired of buying multiple copies of books I thought I'd lost ;)
 
 ## Code Example
@@ -8,7 +8,7 @@ We'll be using GCP and creating the database, restful webservices, web applicati
 
 ## Motivation
 
-I wanted to create a tutorial and I also want to manage my home libraries.
+I wanted to create a tutorial and I also want to manage my home libraries, additionally I'm using this project as the start to an investigation as to the performance of various restful API stacks.
 
 ## Installation
 
