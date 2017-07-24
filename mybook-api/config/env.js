@@ -53,10 +53,11 @@ const env = {
   DATABASE_POOL_MAX: process.env.DATABASE_POOL_MAX || 10,
   DATABASE_POOL_MIN: process.env.DATABASE_POOL_MIN || 1,
   DATABASE_POOL_IDLE: process.env.DATABASE_POOL_IDLE || 5000,
-  DATABASE_QUERY_LOGGING: process.env.DATABASE_QUERY_LOGGING || false,
+  LOGGING_LEVEL: process.env.LOGGING_LEVEL || 'debug',
   API_VERSION: process.env.API_VERSION || 1.0,
   API_NAME: process.env.API_NAME || 'mybook-api',
   API_PORT: process.env.API_PORT || 8080,
+  PERSISTENCE_PROVIDER: process.env.PERSITENCE_PROVIDER || 'sequelize',
 };
 
 module.exports = env;

@@ -12,17 +12,25 @@
  * {@link http://blueottersoftware.com/2017/06/19/mybooks-tutorial-index/MyBooks Tutorial Index}
  * {@link https://www.linkedin.com/in/randycarver/|LinkedIn}
  **/
-const SequelizeAuto = require('sequelize-auto');
+const restify = require('restify');
+const env = require('./config/env');
+const orm = require('./models/orm');
+const booksController = require('./controllers/books-controller')(orm);
+const logger = require('./utils/logger');
 
-const auto = new SequelizeAuto('mybooks', 'root', 'your_password_here', {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: '3306',
-  additional: {
-    timestamps: false,
-  },
+
+const app = restify.createServer();
+app.get('/books', booksController.getAll);
+
+app.listen(env.API_PORT, () => {
+  orm.sequelize.authenticate()
+    .then(() => {
+      logger.info('DB Connection Established');
+    })
+    .catch((err) => {
+      logger.error('DB Connection Failed: ', err);
+      process.exit(1);
+    });
+  logger.info(`app listening at port ${env.API_PORT} for ${env.NODE_ENV} environment.`);
 });
 
-auto.run(function run(err) {
-  if (err) throw err;
-});

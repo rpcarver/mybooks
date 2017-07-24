@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /**
  * @file env-tests.js 
  * Provides tests for the env.js environment wrapper
@@ -59,19 +60,19 @@ describe('env - test', () => {
 
   it('should set the correct properties', () => {
     expect(env.NODE_ENV).to.equal('test');
-    expect(env.DATABASE_NAME).to.equal('mybook_test');
-    expect(env.DATABASE_HOST).to.equal('localhost');
-    expect(env.DATABASE_PORT).to.equal(3306);
-    expect(env.DATABASE_USERNAME).to.equal('root');
-    expect(env.DATABASE_PASSWORD).to.exist;
-    expect(env.DATABASE_DIALECT).to.equal('mysql');
-    expect(env.DATABASE_POOL_MAX).to.equal(10);
-    expect(env.DATABASE_POOL_MIN).to.equal(1);
-    expect(env.DATABASE_POOL_IDLE).to.equal(5000);
-    expect(env.DATABASE_QUERY_LOGGING).to.be.false;
-    expect(env.API_VERSION).to.equal(1.0);
-    expect(env.API_NAME).to.equal('mybook-api');
-    expect(env.API_PORT).to.equal(8080);
+    expect(env.DATABASE_NAME).to.not.be.undefined;
+    expect(env.DATABASE_HOST).to.not.be.undefined;
+    expect(env.DATABASE_PORT).to.not.be.undefined;
+    expect(env.DATABASE_USERNAME).to.not.be.undefined;
+    expect(env.DATABASE_PASSWORD).to.not.be.undefined;
+    expect(env.DATABASE_DIALECT).to.not.be.undefined;
+    expect(env.DATABASE_POOL_MAX).to.not.be.undefined;
+    expect(env.DATABASE_POOL_MIN).to.not.be.undefined;
+    expect(env.DATABASE_POOL_IDLE).to.not.be.undefined;
+    expect(env.LOGGING_LEVEL).to.not.be.undefined;
+    expect(env.API_VERSION).to.not.be.undefined;
+    expect(env.API_NAME).to.not.be.undefined;
+    expect(env.API_PORT).to.not.be.undefined;
   });
 });
 
@@ -96,18 +97,18 @@ describe('env - dev', () => {
 
   it('should set the correct properties', () => {
     expect(env.NODE_ENV).to.equal('development');
-    expect(env.DATABASE_NAME).to.equal('mybook_dev');
-    expect(env.DATABASE_HOST).to.equal('localhost');
-    expect(env.DATABASE_PORT).to.equal(3306);
-    expect(env.DATABASE_USERNAME).to.equal('root');
-    expect(env.DATABASE_PASSWORD).to.exist;
-    expect(env.DATABASE_DIALECT).to.equal('mysql');
-    expect(env.DATABASE_POOL_MAX).to.equal(10);
-    expect(env.DATABASE_POOL_MIN).to.equal(1);
-    expect(env.DATABASE_POOL_IDLE).to.equal(5000);
-    expect(env.DATABASE_QUERY_LOGGING).to.be.false;
-    expect(env.API_VERSION).to.equal(1.0);
-    expect(env.API_NAME).to.equal('mybook-api');
-    expect(env.API_PORT).to.equal(8080);
+    expect(env.DATABASE_NAME).to.not.be.undefined;
+    expect(env.DATABASE_HOST).to.not.be.undefined;
+    expect(env.DATABASE_PORT).to.not.be.undefined;
+    expect(env.DATABASE_USERNAME).to.not.be.undefined;
+    expect(env.DATABASE_PASSWORD).to.not.be.undefined;
+    expect(env.DATABASE_DIALECT).to.not.be.undefined;
+    expect(env.DATABASE_POOL_MAX).to.not.be.undefined;
+    expect(env.DATABASE_POOL_MIN).to.not.be.undefined;
+    expect(env.DATABASE_POOL_IDLE).to.not.be.undefined;
+    expect(env.LOGGING_LEVEL).to.not.be.undefined;
+    expect(env.API_VERSION).to.not.be.undefined;
+    expect(env.API_NAME).to.not.be.undefined;
+    expect(env.API_PORT).to.not.be.undefined;
   });
 });

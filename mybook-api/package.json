@@ -11,31 +11,39 @@
     "test": "NODE_ENV=test mocha --colors -t 30000 --reporter spec \"tests/**/*.js\"",
     "testconfig": "NODE_ENV=test mocha --colors -t 30000 --reporter spec \"tests/config/*.js\"",
     "testmodels": "NODE_ENV=test mocha --colors -t 30000 --reporter spec \"tests/models/*.js\"",
+    "init-dev-db": "NODE_ENV=development node ./scripts/init-dev-db.js",
     "start": "NODE_ENV=development node app.js"
   },
   "engines": {
     "node": "8.1.2"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "dotenv": "^4.0.0",
-    "mysql2": "^1.3.5",
-    "restify": "^4.3.1",
-    "restify-router": "^0.4.2",
-    "sequelize": "^4.2.1"
+    "mysql2": "^1.3.6",
+    "pino": "^4.7.1",
+    "pino-http": "^2.6.1",
+    "restify": "5.0.1",
+    "restify-errors": "4.3.0",
+    "sequelize": "github:rpcarver/sequelize"
   },
   "devDependencies": {
-    "chai": "^4.0.2",
-    "eslint": "^4.1.1",
-    "eslint-config-airbnb": "^15.0.1",
+    "chai": "^4.1.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "4.3.0",
+    "eslint-config-airbnb": "^15.0.2",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-import-resolver-node": "^0.3.1",
     "eslint-plugin-chai-expect": "^1.1.1",
     "eslint-plugin-chai-friendly": "^0.3.6",
-    "eslint-plugin-import": "^2.6.1",
+    "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
-    "istanbul": "0.4.5",
+    "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
-    "sequelize-auto": "^0.4.28"
+    "proxyquire": "^1.8.0",
+    "sequelize-auto": "^0.4.28",
+    "sinon": "^2.3.8",
+    "sinon-chai": "^2.12.0"
   }
 }

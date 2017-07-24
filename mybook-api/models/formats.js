@@ -23,10 +23,18 @@ module.exports = function construct(sequelize, DataTypes) {
     formatName: {
       type: DataTypes.STRING(45),
       allowNull: false,
+      notEmpty: true,
+      validate: {
+        len: [3, 45],
+      },
     },
     description: {
       type: DataTypes.STRING(500),
       allowNull: true,
+      notEmpty: true,
+      validate: {
+        len: [1, 500],
+      },
     },
   }, {
     tableName: 'formats',

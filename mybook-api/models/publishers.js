@@ -23,13 +23,17 @@ module.exports = function construct(sequelize, DataTypes) {
     publisherName: {
       type: DataTypes.STRING(150),
       allowNull: false,
+      validate: {
+        notEmpty: true,
+        len: [3, 150],
+      },
     },
   }, {
     tableName: 'publishers',
     timestamps: false,
   });
 
-  publishers.associate = function associate(orm){
+  publishers.associate = function associate(orm) {
     orm.publishers.hasMany(orm.books, { foreignKey: 'publisherID', sourceKey: 'publisherID' });
   };
 

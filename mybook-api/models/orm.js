@@ -14,6 +14,7 @@
  **/
 const Sequelize = require('sequelize');
 const env = require('../config/env');
+const logger = require('../utils/logger');
 
 const orm = {};
 
@@ -30,7 +31,7 @@ const sequelize = new Sequelize(env.DATABASE_NAME, env.DATABASE_USERNAME, env.DA
   define: {
     timestamps: false,
   },
-  logging: env.DATABASE_QUERY_LOGGING,
+  logging: logger.sql,
 });
 
 orm.authors = sequelize.import('./authors.js');

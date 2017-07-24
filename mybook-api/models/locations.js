@@ -18,10 +18,18 @@ module.exports = function construct(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: false,
       primaryKey: true,
+      validate: {
+        notEmpty: true,
+        len: [3, 100],
+      },
     },
     description: {
       type: DataTypes.STRING(500),
       allowNull: true,
+      validate: {
+        notEmpty: true,
+        len: [3, 500],
+      },
     },
   }, {
     tableName: 'locations',

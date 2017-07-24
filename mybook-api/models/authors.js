@@ -23,10 +23,21 @@ module.exports = function construct(sequelize, DataTypes) {
     lastName: {
       type: DataTypes.STRING(45),
       allowNull: true,
+      validate: {
+        notEmpty: true,
+        len: {
+          args: [0, 45],
+          msg: 'bogus',
+        },
+      },
     },
     firstName: {
       type: DataTypes.STRING(45),
       allowNull: true,
+      validate: {
+        notEmpty: true,
+        len: [3, 45],
+      },
     },
   }, {
     tableName: 'authors',

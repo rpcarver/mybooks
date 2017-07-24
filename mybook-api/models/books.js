@@ -23,6 +23,10 @@ module.exports = function construct(sequelize, DataTypes) {
     title: {
       type: DataTypes.STRING(100),
       allowNull: false,
+      validate: {
+        len: [1, 100],
+        notEmpty: true,
+      },
     },
     publisherID: {
       type: DataTypes.INTEGER(11),
@@ -59,6 +63,10 @@ module.exports = function construct(sequelize, DataTypes) {
     notes: {
       type: DataTypes.STRING(500),
       allowNull: true,
+      validate: {
+        len: [1, 500],
+        notEmpty: true,
+      },
     },
     locationName: {
       type: DataTypes.STRING(45),
